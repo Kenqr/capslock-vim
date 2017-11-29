@@ -8,6 +8,11 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 inVimMode := false
 
+exitVimMode() {
+    global inVimMode
+    inVimMode := false
+    ToolTip
+}
 
 ; ================ Global Hotkeys ================
 
@@ -22,11 +27,7 @@ CapsLock & v::
     ToolTip, CapsLockVim
 return
 
-; Exit vim mode
-CapsLock::
-    inVimMode := false
-    ToolTip
-return
+CapsLock::exitVimMode()
 
 
 ; ================ Vim Mode Hotkeys ================
