@@ -27,12 +27,12 @@ CapsLock & v::
     ToolTip, CapsLockVim
 return
 
-CapsLock::exitVimMode()
-
 
 ; ================ Vim Mode Hotkeys ================
 
 #If inVimMode
+
+i::exitVimMode()
 
 ; Arrow keys
 h::Left
