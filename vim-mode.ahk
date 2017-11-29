@@ -32,3 +32,9 @@ return
 ; ================ Vim Mode Hotkeys ================
 
 #If inVimMode
+
+; Arrow keys
+h::Left
+j::Down
+k::Up
+l::Right
