@@ -65,6 +65,15 @@ CapsLock & x::
     Send {Delete}
 return
 
+; Home
+CapsLock & 0::
+    Send {Home}
+return
+
+; End
+CapsLock & a::
+    Send {End}
+return
 
 ; ================ Vim Mode Hotkeys ================
 
@@ -81,3 +90,8 @@ l::Right
 ; Delete, Backspace
 x::Delete
 X::Backspace
+
+; Home, End
+0::Home
++6 UP::Send {Home} ; Caret (^)
++4 UP::Send {End} ; Dollar sign ($)
