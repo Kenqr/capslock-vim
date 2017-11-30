@@ -75,6 +75,17 @@ CapsLock & a::
     Send {End}
 return
 
+; Ctrl+Right
+CapsLock & w::
+    Send {CtrlDown}{Right}{CtrlUp}
+return
+
+; Ctrl+Left
+CapsLock & b::
+    Send {CtrlDown}{Left}{CtrlUp}
+return
+
+
 ; ================ Vim Mode Hotkeys ================
 
 #If inVimMode
@@ -95,3 +106,15 @@ X::Backspace
 0::Home
 +6 UP::Send {Home} ; Caret (^)
 +4 UP::Send {End} ; Dollar sign ($)
+
+; Ctrl+Right
+w::
++w::
+    Send {CtrlDown}{Right}{CtrlUp}
+return
+
+; Ctrl+Left
+b::
++b::
+    Send {CtrlDown}{Left}{CtrlUp}
+return
