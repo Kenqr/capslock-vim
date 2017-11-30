@@ -33,6 +33,16 @@ return
 ; Escape
 CapsLock & q::Send {Escape}
 
+; Toggle CapsLock
++CapsLock::
+    capsLockState := GetKeyState("CapsLock", "T")
+    if (capsLockState) {
+        SetCapsLockState, Off
+    } else {
+        SetCapsLockState, On
+    }
+return
+
 
 ; ================ Vim Mode Hotkeys ================
 
