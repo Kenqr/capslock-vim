@@ -43,6 +43,22 @@ CapsLock & q::Send {Escape}
     }
 return
 
+; Arrow keys
+CapsLock & h::
+    Send {Left}
+return
+
+CapsLock & j::
+    Send {Down}
+return
+
+CapsLock & k::
+    Send {Up}
+return
+
+CapsLock & l::
+    Send {Right}
+return
 
 ; ================ Vim Mode Hotkeys ================
 
