@@ -8,6 +8,8 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 inVimMode := false
 
+SetCapsLockState, AlwaysOff
+
 exitVimMode() {
     global inVimMode
     inVimMode := false
@@ -22,7 +24,10 @@ Pause::
 return
 
 ; Turn off CapsLock
-CapsLock::SetCapsLockState, Off
+CapsLock::SetCapsLockState, AlwaysOff
+
+; Turn on CapsLock
+CapsLock & Tab::SetCapsLockState, AlwaysOn
 
 ; Enter vim mode
 CapsLock & v::
@@ -33,62 +38,10 @@ return
 ; Escape
 CapsLock & q::Send {Escape}
 
-; Toggle CapsLock
-+CapsLock::
-    capsLockState := GetKeyState("CapsLock", "T")
-    if (capsLockState) {
-        SetCapsLockState, Off
-    } else {
-        SetCapsLockState, On
-    }
-return
-
-; Arrow keys
-CapsLock & h::
-    Send {Left}
-return
-
-CapsLock & j::
-    Send {Down}
-return
-
-CapsLock & k::
-    Send {Up}
-return
-
-CapsLock & l::
-    Send {Right}
-return
-
-; Delete
-CapsLock & x::
-    Send {Delete}
-return
-
-; Home
-CapsLock & 0::
-    Send {Home}
-return
-
-; End
-CapsLock & a::
-    Send {End}
-return
-
-; Ctrl+Right
-CapsLock & w::
-    Send {CtrlDown}{Right}{CtrlUp}
-return
-
-; Ctrl+Left
-CapsLock & b::
-    Send {CtrlDown}{Left}{CtrlUp}
-return
-
 
 ; ================ Vim Mode Hotkeys ================
 
-#If inVimMode
+#If inVimMode OR GetKeyState("CapsLock", "P")
 
 i::exitVimMode()
 
