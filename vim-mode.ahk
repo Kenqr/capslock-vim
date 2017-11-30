@@ -27,6 +27,9 @@ CapsLock & v::
     ToolTip, CapsLockVim
 return
 
+; Escape
+CapsLock & q::Send {Escape}
+
 
 ; ================ Vim Mode Hotkeys ================
 
