@@ -43,7 +43,28 @@ CapsLock & q::Send {Escape}
 
 #If inVimMode OR GetKeyState("CapsLock", "P")
 
+; Enter insert mode
 i::exitVimMode()
++i::
+    Send {Home}
+    exitVimMode()
+return
+a::
+    Send {Right}
+    exitVimMode()
+return
++a::
+    Send {End}
+    exitVimMode()
+return
+o::
+    Send {End}{Enter}
+    exitVimMode()
+return
++o::
+    Send {Up}{End}{Enter}
+    exitVimMode()
+return
 
 ; Arrow keys
 h::Left
