@@ -77,7 +77,7 @@ x::Delete
 X::Backspace
 
 ; Home, End
-0::Home
+0::Send {Home}{Home}
 +6 UP::Send {Home} ; Caret (^)
 +4 UP::Send {End} ; Dollar sign ($)
 
