@@ -60,6 +60,12 @@ CapsLock & l::
     Send {Right}
 return
 
+; Delete
+CapsLock & x::
+    Send {Delete}
+return
+
+
 ; ================ Vim Mode Hotkeys ================
 
 #If inVimMode
@@ -71,3 +77,7 @@ h::Left
 j::Down
 k::Up
 l::Right
+
+; Delete, Backspace
+x::Delete
+X::Backspace
