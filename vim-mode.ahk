@@ -21,8 +21,8 @@ Pause::
     ExitApp
 return
 
-; Disable CapsLock
-CapsLock::return
+; Turn off CapsLock
+CapsLock::SetCapsLockState, Off
 
 ; Enter vim mode
 CapsLock & v::
