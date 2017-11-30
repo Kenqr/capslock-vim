@@ -92,3 +92,7 @@ b::
 +b::
     Send {CtrlDown}{Left}{CtrlUp}
 return
+
+; Page Up, Page Down
++h::Send {PgUp}
++l::Send {PgDn}
