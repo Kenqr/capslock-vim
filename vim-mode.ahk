@@ -21,6 +21,9 @@ Pause::
     ExitApp
 return
 
+; Disable CapsLock
+CapsLock::return
+
 ; Enter vim mode
 CapsLock & v::
     inVimMode := true
