@@ -73,6 +73,8 @@ return
 +h::Send {PgUp}
 +l::Send {PgDn}
 
+; End of file
++G::Send {CtrlDown}{End}{CtrlUp}
 
 ; ================ Command ================
 
