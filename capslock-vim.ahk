@@ -116,3 +116,6 @@ return
 ; Delete, Backspace
 x::Delete
 +x::Backspace
+
+; Delete to end of line
++d::Send {ShiftDown}{End}{ShiftUp}{Delete}
