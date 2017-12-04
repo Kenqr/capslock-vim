@@ -43,28 +43,8 @@ CapsLock & q::Send {Escape}
 
 #If inVimMode OR GetKeyState("CapsLock", "P")
 
-; Enter insert mode
-i::exitVimMode()
-+i::
-    Send {Home}
-    exitVimMode()
-return
-a::
-    Send {Right}
-    exitVimMode()
-return
-+a::
-    Send {End}
-    exitVimMode()
-return
-o::
-    Send {End}{Enter}
-    exitVimMode()
-return
-+o::
-    Send {Up}{End}{Enter}
-    exitVimMode()
-return
+
+; ================ Motion ================
 
 ; Arrow keys
 h::Left
@@ -72,22 +52,18 @@ j::Down
 k::Up
 l::Right
 
-; Delete, Backspace
-x::Delete
-X::Backspace
-
-; Home, End
+; Beginning/end of line
 0::Send {Home}{Home}
 +6 UP::Send {Home} ; Caret (^)
 +4 UP::Send {End} ; Dollar sign ($)
 
-; Ctrl+Right
+; Next word
 w::
 +w::
     Send {CtrlDown}{Right}{CtrlUp}
 return
 
-; Ctrl+Left
+; Previous word
 b::
 +b::
     Send {CtrlDown}{Left}{CtrlUp}
@@ -96,3 +72,45 @@ return
 ; Page Up, Page Down
 +h::Send {PgUp}
 +l::Send {PgDn}
+
+
+; ================ Command ================
+
+; Insert
+i::
+    exitVimMode()
+return
+
+; Insert at beginning of line
++i::
+    Send {Home}
+    exitVimMode()
+return
+
+; Append
+a::
+    Send {Right}
+    exitVimMode()
+return
+
+; Append at end of line
++a::
+    Send {End}
+    exitVimMode()
+return
+
+; Open below
+o::
+    Send {End}{Enter}
+    exitVimMode()
+return
+
+; Open above
++o::
+    Send {Up}{End}{Enter}
+    exitVimMode()
+return
+
+; Delete, Backspace
+x::Delete
++x::Backspace
