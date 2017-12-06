@@ -76,6 +76,11 @@ return
 ; End of file
 +G::Send {CtrlDown}{End}{CtrlUp}
 
+; Previous line, Next line
+-::Send {Up}{End}{Home}
++::Send {Down}{End}{Home}
+
+
 ; ================ Command ================
 
 ; Insert
