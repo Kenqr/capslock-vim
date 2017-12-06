@@ -124,3 +124,6 @@ x::Delete
 
 ; Delete to end of line
 +d::Send {ShiftDown}{End}{ShiftUp}{Delete}
+
+; Undo
+u::Send {CtrlDown}z{CtrlUp}
