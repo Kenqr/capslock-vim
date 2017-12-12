@@ -127,3 +127,6 @@ x::Delete
 
 ; Undo
 u::Send {CtrlDown}z{CtrlUp}
+
+; Copy line
++y::Send {End}{Home}{Home}{ShiftDown}{Down}{ShiftUp}{CtrlDown}c{CtrlUp}{Up}
