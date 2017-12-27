@@ -10,6 +10,12 @@ inVimMode := false
 
 SetCapsLockState, AlwaysOff
 
+enterVimMode() {
+    global inVimMode
+    inVimMode := true
+    ToolTip, CapsLockVim
+}
+
 exitVimMode() {
     global inVimMode
     inVimMode := false
@@ -30,10 +36,7 @@ CapsLock::SetCapsLockState, AlwaysOff
 CapsLock & Tab::SetCapsLockState, AlwaysOn
 
 ; Enter vim mode
-CapsLock & v::
-    inVimMode := true
-    ToolTip, CapsLockVim
-return
+CapsLock & z::enterVimMode()
 
 ; Escape
 CapsLock & q::Send {Escape}
