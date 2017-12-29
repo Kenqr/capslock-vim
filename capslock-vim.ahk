@@ -133,3 +133,21 @@ u::Send {CtrlDown}z{CtrlUp}
 
 ; Copy line
 +y::Send {End}{Home}{Home}{ShiftDown}{Down}{ShiftUp}{CtrlDown}c{CtrlUp}{Up}
+
+; Visual mode
+v::
+    if (!inVimMode) {
+        enterVimMode()
+    }
+    shiftIsDown := GetKeyState("Shift")
+    if (!shiftIsDown) {
+        Send {ShiftDown}
+    } else {
+        Send {ShiftUp}
+    }
+return
+
+; ================ Etc ================
+
+; Click
+space::LButton
