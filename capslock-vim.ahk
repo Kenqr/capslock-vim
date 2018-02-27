@@ -126,7 +126,7 @@ x::Delete
 +x::Backspace
 
 ; Delete to end of line
-+d::Send {ShiftDown}{End}{ShiftUp}{Delete}
++d::Send {ShiftDown}{End}{ShiftUp}{CtrlDown}x{CtrlUp}
 
 ; Undo
 u::Send {CtrlDown}z{CtrlUp}
