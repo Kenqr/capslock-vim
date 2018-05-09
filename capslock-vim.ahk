@@ -122,22 +122,8 @@ return
 return
 
 ; Delete, Backspace
-x::
-    ControlGet, selectedText, Selected, , , A,
-    if (selectedText) {
-        Send {CtrlDown}x{CtrlUp}
-    } else {
-        Send {Delete}
-    }
-return
-+x::
-    ControlGet, selectedText, Selected, , , A,
-    if (selectedText) {
-        Send {CtrlDown}x{CtrlUp}
-    } else {
-        Send {Backspace}
-    }
-return
+x::Delete
++x::Backspace
 
 ; Delete to end of line
 +d::Send {ShiftDown}{End}{ShiftUp}{CtrlDown}x{CtrlUp}
