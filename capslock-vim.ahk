@@ -41,6 +41,12 @@ CapsLock & z::enterVimMode()
 ; Escape
 CapsLock & q::Send {Escape}
 
+; Page Up, Page Down, Home, End
+CapsLock & Up::Send {PgUp}
+CapsLock & Down::Send {PgDn}
+CapsLock & Left::Send {Home}
+CapsLock & Right::Send {End}
+
 
 ; ================ Vim Mode Hotkeys ================
 
