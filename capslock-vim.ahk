@@ -1,56 +1,51 @@
-#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
-; #Warn  ; Enable warnings to assist with detecting common errors.
-SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
-SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+#Requires AutoHotkey v2.0
 
 
 ; ================ Initialize ================
 
 inVimMode := false
 
-SetCapsLockState, AlwaysOff
+SetCapsLockState("AlwaysOff")
 
 enterVimMode() {
     global inVimMode
     inVimMode := true
-    ToolTip, CapsLockVim
+    ToolTip("CapsLockVim")
 }
 
 exitVimMode() {
     global inVimMode
     inVimMode := false
-    ToolTip
+    ToolTip()
 }
 
 ; ================ Global Hotkeys ================
 
 ; Emergency exit in case something is broken
-Pause::
-    ExitApp
-return
+Pause::ExitApp()
 
 ; Turn off CapsLock
-CapsLock::SetCapsLockState, AlwaysOff
+CapsLock::SetCapsLockState("AlwaysOff")
 
 ; Turn on CapsLock
-CapsLock & Tab::SetCapsLockState, AlwaysOn
+CapsLock & Tab::SetCapsLockState("AlwaysOn")
 
 ; Enter vim mode
 CapsLock & z::enterVimMode()
 
 ; Escape
-CapsLock & q::Send {Escape}
+CapsLock & q::Send("{Escape}")
 
 ; Page Up, Page Down, Home, End
-CapsLock & Up::Send {PgUp}
-CapsLock & Down::Send {PgDn}
-CapsLock & Left::Send {Home}
-CapsLock & Right::Send {End}
+CapsLock & Up::Send("{PgUp}")
+CapsLock & Down::Send("{PgDn}")
+CapsLock & Left::Send("{Home}")
+CapsLock & Right::Send("{End}")
 
 
 ; ================ Vim Mode Hotkeys ================
 
-#If inVimMode OR GetKeyState("CapsLock", "P")
+#HotIf inVimMode OR GetKeyState("CapsLock", "P")
 
 
 ; ================ Motion ================
@@ -62,80 +57,85 @@ k::Up
 l::Right
 
 ; Beginning/end of line
-0::Send {Home}{Home}
-+6 UP::Send {Home} ; Caret (^)
-+4 UP::Send {End} ; Dollar sign ($)
+0::Send("{Home}{Home}")
++6 UP::Send("{Home}") ; Caret (^)
++4 UP::Send("{End}") ; Dollar sign ($)
 
 ; Next word
 w::
 +w::
-    Send {CtrlDown}{Right}{CtrlUp}
-return
+{
+    Send("{CtrlDown}{Right}{CtrlUp}")
+}
 
 ; Previous word
 b::
 +b::
-    Send {CtrlDown}{Left}{CtrlUp}
-return
+{
+    Send("{CtrlDown}{Left}{CtrlUp}")
+}
 
 ; Page Up, Page Down
-+h::Send {PgUp}
-+l::Send {PgDn}
++h::Send("{PgUp}")
++l::Send("{PgDn}")
 
 ; End of file
-+G::Send {CtrlDown}{End}{CtrlUp}
++G::Send("{CtrlDown}{End}{CtrlUp}")
 
 ; Previous line, Next line
--::Send {Up}{End}{Home}
-+::Send {Down}{End}{Home}
+-::Send("{Up}{End}{Home}")
++::Send("{Down}{End}{Home}")
 
 
 ; ================ Command ================
 
 ; Insert
-i::
-    exitVimMode()
-return
+i::exitVimMode()
 
 ; Insert at beginning of line
 +i::
-    Send {Home}
+{
+    Send("{Home}")
     exitVimMode()
-return
+}
 
 ; Append
 a::
-    Send {Right}
+{
+    Send("{Right}")
     exitVimMode()
-return
+}
 
 ; Append at end of line
 +a::
-    Send {End}
+{
+    Send("{End}")
     exitVimMode()
-return
+}
 
 ; Open below
 o::
-    Send {End}{Enter}
+{
+    Send("{End}{Enter}")
     exitVimMode()
-return
+}
 
 ; Open above
 +o::
-    Send {Up}{End}{Enter}
+{
+    Send("{Up}{End}{Enter}")
     exitVimMode()
-return
+}
 
 ; Delete, Backspace
 x::Delete
 +x::Backspace
 
 ; Delete to end of line
-+d::Send {ShiftDown}{End}{ShiftUp}{CtrlDown}x{CtrlUp}
++d::Send("{ShiftDown}{End}{ShiftUp}{CtrlDown}x{CtrlUp}")
 
 ; Undo
-u::Send {CtrlDown}z{CtrlUp}
+u::Send("{CtrlDown}z{CtrlUp}")
 
 ; Copy line
-+y::Send {End}{Home}{Home}{ShiftDown}{Down}{ShiftUp}{CtrlDown}c{CtrlUp}{Up}
++y::Send("{End}{Home}{Home}{ShiftDown}{Down}{ShiftUp}{CtrlDown}c{CtrlUp}{Up}")
