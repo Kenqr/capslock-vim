@@ -51,10 +51,10 @@ CapsLock & Right::Send("{End}")
 ; ================ Motion ================
 
 ; Arrow keys
-h::Left
-j::Down
-k::Up
-l::Right
+h::Send("{Left}")
+j::Send("{Down}")
+k::Send("{Up}")
+l::Send("{Right}")
 
 ; Beginning/end of line
 0::Send("{Home}{Home}")
@@ -128,8 +128,8 @@ o::
 }
 
 ; Delete, Backspace
-x::Delete
-+x::Backspace
+x::Send("{Delete}")
++x::Send("{Backspace}")
 
 ; Delete to end of line
 +d::Send("{ShiftDown}{End}{ShiftUp}{CtrlDown}x{CtrlUp}")
