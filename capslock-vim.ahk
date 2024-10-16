@@ -13,7 +13,10 @@ enterVimMode() {
     ToolTip("CapsLockVim")
 }
 
-exitVimMode() {
+exitVimMode(keys := "") {
+    if (keys) {
+        Send(keys)
+    }
     global inVimMode
     inVimMode := false
     ToolTip()
@@ -93,39 +96,19 @@ b::
 i::exitVimMode()
 
 ; Insert at beginning of line
-+i::
-{
-    Send("{Home}")
-    exitVimMode()
-}
++i::exitVimMode("{Home}")
 
 ; Append
-a::
-{
-    Send("{Right}")
-    exitVimMode()
-}
+a::exitVimMode("{Right}")
 
 ; Append at end of line
-+a::
-{
-    Send("{End}")
-    exitVimMode()
-}
++a::exitVimMode("{End}")
 
 ; Open below
-o::
-{
-    Send("{End}{Enter}")
-    exitVimMode()
-}
+o::exitVimMode("{End}{Enter}")
 
 ; Open above
-+o::
-{
-    Send("{Up}{End}{Enter}")
-    exitVimMode()
-}
++o::exitVimMode("{Up}{End}{Enter}")
 
 ; Delete, Backspace
 x::Send("{Delete}")
