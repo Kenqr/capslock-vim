@@ -65,14 +65,14 @@ l::Send("{Right}")
 w::
 +w::
 {
-    Send("{CtrlDown}{Right}{CtrlUp}")
+    Send("^{Right}")
 }
 
 ; Previous word
 b::
 +b::
 {
-    Send("{CtrlDown}{Left}{CtrlUp}")
+    Send("^{Left}")
 }
 
 ; Page Up, Page Down
@@ -80,7 +80,7 @@ b::
 +l::Send("{PgDn}")
 
 ; End of file
-+G::Send("{CtrlDown}{End}{CtrlUp}")
++G::Send("^{End}")
 
 ; Previous line, Next line
 -::Send("{Up}{End}{Home}")
@@ -132,10 +132,10 @@ x::Send("{Delete}")
 +x::Send("{Backspace}")
 
 ; Delete to end of line
-+d::Send("{ShiftDown}{End}{ShiftUp}{CtrlDown}x{CtrlUp}")
++d::Send("+{End}^x")
 
 ; Undo
-u::Send("{CtrlDown}z{CtrlUp}")
+u::Send("^z")
 
 ; Copy line
-+y::Send("{End}{Home}{Home}{ShiftDown}{Down}{ShiftUp}{CtrlDown}c{CtrlUp}{Up}")
++y::Send("{End}{Home}{Home}+{Down}^c{Up}")
