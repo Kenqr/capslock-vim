@@ -58,8 +58,8 @@ l::Send("{Right}")
 
 ; Beginning/end of line
 0::Send("{Home}{Home}")
-+6 UP::Send("{Home}") ; Caret (^)
-+4 UP::Send("{End}") ; Dollar sign ($)
+^::Send("{Home}")
+$::Send("{End}")
 
 ; Next word
 w::
