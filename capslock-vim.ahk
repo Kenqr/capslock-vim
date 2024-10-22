@@ -22,6 +22,17 @@ exitVimMode(keys := "") {
     ToolTip()
 }
 
+; Send keys while allowing extra shift modifier
+SendWithShift(keys) {
+    if (GetKeyState("Shift")) {
+        Send("{Shift down}")
+    }
+    Send(keys)
+    if (GetKeyState("Shift")) {
+        Send("{Shift up}")
+    }
+}
+
 ; ================ Global Hotkeys ================
 
 ; Emergency exit in case something is broken
@@ -39,12 +50,10 @@ CapsLock & z::enterVimMode()
 ; Escape
 CapsLock & q::Send("{Escape}")
 
-; Page Up, Page Down, Home, End
-CapsLock & Up::Send("{PgUp}")
-CapsLock & Down::Send("{PgDn}")
-CapsLock & Left::Send("{Home}")
-CapsLock & Right::Send("{End}")
-
+CapsLock & Up::SendWithShift("{PgUp}")
+CapsLock & Down::SendWithShift("{PgDn}")
+CapsLock & Left::SendWithShift("{Home}")
+CapsLock & Right::SendWithShift("{End}")
 
 ; ================ Vim Mode Hotkeys ================
 
