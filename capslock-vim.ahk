@@ -38,17 +38,24 @@ SendWithShift(keys) {
 ; Emergency exit in case something is broken
 Pause::ExitApp()
 
-; Turn off CapsLock
-CapsLock::SetCapsLockState("AlwaysOff")
+; Map CapsLock to Escape
+CapsLock::Send("{Escape}")
 
-; Turn on CapsLock
-CapsLock & Tab::SetCapsLockState("AlwaysOn")
+; Use CapseLock & Tab to toggle CapsLock instead
+CapsLock & Tab::
+{
+    if (GetKeyState("CapsLock", "T")) {
+        SetCapsLockState("AlwaysOff")
+    } else {
+        SetCapsLockState("AlwaysOn")
+    }
+}
 
 ; Enter vim mode
 CapsLock & z::enterVimMode()
 
-; Escape
-CapsLock & q::Send("{Escape}")
+; Disable CapsLock + q
+CapsLock & q::return
 
 CapsLock & Up::SendWithShift("{PgUp}")
 CapsLock & Down::SendWithShift("{PgDn}")
