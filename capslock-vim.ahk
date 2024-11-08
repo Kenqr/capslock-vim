@@ -8,6 +8,10 @@ inVimMode := false
 
 SetCapsLockState("AlwaysOff")
 
+ToolTip("CapsLock VIM Started")
+Sleep(1000)
+ToolTip
+
 enterVimMode() {
     global inVimMode
     inVimMode := true
