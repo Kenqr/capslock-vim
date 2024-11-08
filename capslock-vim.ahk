@@ -40,7 +40,16 @@ SendWithShift(keys) {
 Pause::ExitApp()
 
 ; Map CapsLock to Escape
-CapsLock::Send("{Escape}")
+~CapsLock::
+{
+    hotkey := A_ThisHotkey
+    RegExMatch(hotkey, "\W$|\w*$", &key)
+    KeyWait key[]
+    if (key[] != A_PriorKey) || (hotkey != A_ThisHotkey)
+        return
+    if (A_TimeSinceThisHotkey < 300)
+        Send("{Escape}")
+}
 
 ; Use CapseLock & Tab to toggle CapsLock instead
 CapsLock & Tab::
