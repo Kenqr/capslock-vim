@@ -155,3 +155,12 @@ u::Send("^z")
 
 ; Copy line
 +y::Send("{End}{Home}{Home}+{Down}^c{Up}")
+
+; Find
+/::Send("^f")
+
+; Next(find)
+n::Send("{F3}")
+
+; Prev(find)
++n::Send("+{F3}")
