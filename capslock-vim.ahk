@@ -140,6 +140,9 @@ o::exitVimMode("{End}{Enter}")
 ; Open above
 +o::exitVimMode("{Up}{End}{Enter}")
 
+; Join lines
++j::Send("{End}{Shift down}{Down}{End}{Home}{Shift up}{Space}{Left}")
+
 ; Delete, Backspace
 x::Send("{Delete}")
 +x::Send("{Backspace}")
