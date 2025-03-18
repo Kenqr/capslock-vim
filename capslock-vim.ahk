@@ -28,13 +28,19 @@ exitVimMode(keys := "") {
 }
 
 ; Send keys while allowing extra shift modifier
-SendWithShift(keys) {
-    if (GetKeyState("Shift")) {
+SendWithModifier(keys, ctrl := false, shift := false) {
+    if (ctrl && GetKeyState("Ctrl")) {
+        Send("{Ctrl down}")
+    }
+    if (shift && GetKeyState("Shift")) {
         Send("{Shift down}")
     }
     Send(keys)
-    if (GetKeyState("Shift")) {
+    if (shift && GetKeyState("Shift")) {
         Send("{Shift up}")
+    }
+    if (ctrl && GetKeyState("Ctrl")) {
+        Send("{Ctrl up}")
     }
 }
 
@@ -71,10 +77,10 @@ CapsLock & z::enterVimMode()
 ; Disable CapsLock + q
 CapsLock & q::return
 
-CapsLock & Up::SendWithShift("{PgUp}")
-CapsLock & Down::SendWithShift("{PgDn}")
-CapsLock & Left::SendWithShift("{Home}")
-CapsLock & Right::SendWithShift("{End}")
+CapsLock & Up::SendWithModifier("{PgUp}", true, true)
+CapsLock & Down::SendWithModifier("{PgDn}", true, true)
+CapsLock & Left::SendWithModifier("{Home}", true, true)
+CapsLock & Right::SendWithModifier("{End}", true, true)
 
 ; ================ Vim Mode Hotkeys ================
 
